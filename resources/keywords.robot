@@ -4,11 +4,7 @@ Library    String
 Library    Collections
 
 *** Variables ***
-${input_username}    //input[contains(@placeholder, 'Username')]
-${input_password}    //input[contains(@placeholder, 'Password')]
-${button_login}    //input[contains(@data-test, 'login-button')]
-${xpath_users}    //div[@id = "login_credentials"][1]
-${xpath_password}    //div[@class='login_password']
+${cookie_agree}    //span[@id='cookies-agree']
 @{price_list}
 @{price_list_basket}
 
@@ -17,7 +13,12 @@ Setup Browser
     OpenBrowser    about:blank    chrome
     GoTo    https://www.nay.sk/    
 
-
+Cookies and category
+    Click Element    ${cookie_agree}
+    Click Text    Mobily
+    Click Text    Mobilne
+    Click Text    Smartfony
+    Click Text    Vsetko    Android
 
 Sorting high to low
     Drop Down    //select[contains(@class,'product_sort_container')]    Price (high to low)
