@@ -4,34 +4,34 @@ Library    String
 Library    Collections
 
 *** Variables ***
-${cookie_agree}    //span[@id='cookies-agree']
+
 @{price_list}
 @{price_list_basket}
 
 *** Keywords ***
 Setup Browser
     OpenBrowser    about:blank    chrome
-    GoTo    https://www.nay.sk/    
+    GoTo    https://www.tpd.sk/    
 
 Cookies and category
-    Click Element    ${cookie_agree}
-    Click Text    Mobily
-    Click Text    Mobilné
-    Click Text    Smartfóny
-    Click Text    Všetko    Android
+    Click Element    //button[contains(@id,'AllowAll')]
+    Hover Text    Počítače a smartfóny
+    Click Text    Mobilné Telefóny    smartfóny Samsung
 
 Sorting high to low
-    Drop Down    //button[contains(@id,'8570')]    Najdrahšie
+    Click Text    Od najdrahšieho
     
 Price sorting control
 #Create List of prices
-    ${elements_count}    Get Element Count    //strong[contains(@class,'typo-complex-16')] 
+    ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
     
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${element_num}    Evaluate    ${counter}+1
-        ${xpath}    Set Variable    //div[@class="inventory_item"][${element_num}]//div[@class="inventory_item_price"]
-        ${price_txt}    Get Text    ${xpath}    between=$???
-        ${price_num}    Convert To Number    ${price_txt}
+        ${xpath}    Set Variable    //div[contains(@class,'products__item')][${element_num}]//span[contains(@class,'number left')]
+        ${price_txt}    Get Text    ${xpath}    between=???€
+        ${price_txt2}    Remove String    ${price_txt}    ${SPACE}
+        ${price_txt3}    Fetch From Left    ${price_txt2}    ,
+        ${price_num}    Convert To Number    ${price_txt3}
         Append To List    ${price_list}    ${price_num}
     END
     #Price sorting control

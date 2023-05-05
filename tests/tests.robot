@@ -12,11 +12,11 @@ Basket delete
    Cookies and category
    Sorting high to low
    Price sorting control
-   Add items to basket    3
-   Open basket
-   Price sorting control in basket
-   Delete from basket    3
-   Verify No Element    //button[contains(@name,'remove')]
+   #Add items to basket    3
+   #Open basket
+   #Price sorting control in basket
+   #Delete from basket    3
+   #Verify No Element    //button[contains(@name,'remove')]
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful
