@@ -15,24 +15,7 @@ ${xpath_password}    //div[@class='login_password']
 *** Keywords ***
 Setup Browser
     OpenBrowser    about:blank    chrome
-    GoTo    https://www.saucedemo.com/    
-Get users credentials
-    ${STANDARD_USER_LOGIN}    Get Text    ${xpath_users}    between=are:???locked
-    ${LOCKED_OUT_USER_LOGIN}    Get Text    ${xpath_users}    between=user???problem
-    ${PROBLEM_USER_LOGIN}    Get Text    ${xpath_users}    between=user???performance
-    ${PERFORMANCE_GLITCH_USER_LOGIN}    Get Text    ${xpath_users}    between=problem_user???
-    ${PASSWORD}    GetText    ${xpath_password}    between=users:???
-    Set Test Variable    ${STANDARD_USER_LOGIN}
-    Set Test Variable    ${LOCKED_OUT_USER_LOGIN}
-    Set Test Variable    ${PROBLEM_USER_LOGIN}
-    Set Test Variable    ${PERFORMANCE_GLITCH_USER_LOGIN}
-    Set Test Variable    ${PASSWORD}
-
-Log into
-    [Arguments]    ${login_username}    ${login_password}
-    Type Text    ${input_username}    ${login_username}
-    Type Text    ${input_password}    ${login_password}
-    ClickElement    ${button_login}
+    GoTo    https://www.nay.sk/    
 
 Sorting high to low
     Drop Down    //select[contains(@class,'product_sort_container')]    Price (high to low)
