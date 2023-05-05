@@ -21,11 +21,11 @@ Cookies and category
     Click Text    Všetko    Android
 
 Sorting high to low
-    Drop Down    //select[contains(@class,'product_sort_container')]    Price (high to low)
+    Drop Down    //button[contains(@id,'8570')]    Najdrahšie
     
 Price sorting control
 #Create List of prices
-    ${elements_count}    Get Element Count    //div[contains(@class,'inventory_item_price')] 
+    ${elements_count}    Get Element Count    //strong[contains(@class,'typo-complex-16')] 
     
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${element_num}    Evaluate    ${counter}+1
