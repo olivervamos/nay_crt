@@ -13,10 +13,11 @@ Basket delete
    Cookies and category
    Sorting high to low
    Price sorting control
-   Get Name of items    ${number_of_items}
+   Get Names of items    ${number_of_items}
    Add items to basket    ${number_of_items}
    Open basket
-   #Price sorting control in basket
+   Get Names of items in basket    ${number_of_items}
+   List of names Equal
    #Delete from basket    3
    #Verify No Element    //button[contains(@name,'remove')]
 

@@ -53,9 +53,11 @@ Price sorting control in basket
 
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${element_num}    Evaluate    ${counter}+1
-        ${xpath}    Set Variable    //div[@class="cart_item"][${element_num}]//div[@class="inventory_item_price"]
-        ${price_txt}    Get Text    ${xpath}    between=$???
-        ${price_num}    Convert To Number    ${price_txt}
+        ${xpath}    Set Variable    //div[contains(@class,'cart__products__row ')][${element_num}]//r-span[contains(@data-type,'finalPriceVat')]
+        ${price_txt}    Get Text    ${xpath}    between=???€
+        ${price_txt2}    Remove String    ${price_txt}    ${SPACE}
+        ${price_txt3}    Fetch From Left    ${price_txt2}    ,
+        ${price_num}    Convert To Number    ${price_txt3}
         Append To List    ${price_list_basket}    ${price_num}
     END
     #Price sorting control
@@ -69,7 +71,7 @@ Price sorting control in basket
         Log To Console    ${ListItem1}' and '${ListItem2}
     END     
 
-Get Name of items
+Get Names of items
     [Arguments]    ${num_of_items}
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
@@ -77,6 +79,18 @@ Get Name of items
         Append To List    ${names_items}    ${name}
     END
     Log To Console    ${names_items}
+
+Get Names of items in basket
+    [Arguments]    ${num_of_items}
+    FOR    ${counter}    IN RANGE    ${num_of_items}
+        ${element_num}    Evaluate    ${counter}+1
+        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${num_of_items}]//strong 
+        Append To List    ${names_items_basket}    ${name}
+    END
+    Log To Console    ${names_items_basket}
+
+List of names Equal
+    Should Be Equal    ${names_items}    ${names_items_basket}    
 
 Add items to basket
 #Add 3 most expensive items to basket 
