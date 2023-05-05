@@ -84,7 +84,7 @@ Get Names of items in basket
     [Arguments]    ${num_of_items}
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
-        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${num_of_items}]//strong 
+        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${element_num}]//strong 
         Append To List    ${names_items_basket}    ${name}
     END
     Log To Console    ${names_items_basket}
