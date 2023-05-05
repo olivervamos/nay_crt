@@ -17,6 +17,8 @@ Setup Browser
     OpenBrowser    about:blank    chrome
     GoTo    https://www.nay.sk/    
 
+
+
 Sorting high to low
     Drop Down    //select[contains(@class,'product_sort_container')]    Price (high to low)
     
