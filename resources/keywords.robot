@@ -7,6 +7,8 @@ Library    Collections
 
 @{price_list}
 @{price_list_basket}
+@{names_items}
+@{names_items_basket}
 
 *** Keywords ***
 Setup Browser
@@ -66,6 +68,14 @@ Price sorting control in basket
         Should Be True    ${ListItem1}>=${ListItem2}
         Log To Console    ${ListItem1}' and '${ListItem2}
     END     
+
+Get Name of items
+    [Arguments]    ${num_of_items}
+    FOR    ${counter}    IN RANGE    ${num_of_items}
+        ${element_num}    Evaluate    ${counter}+1
+        ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]
+        ${name}    Append To List    ${names_items}
+    END
 
 Add items to basket
 #Add 3 most expensive items to basket 

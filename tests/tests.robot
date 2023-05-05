@@ -5,6 +5,7 @@ Test Teardown    CloseBrowser
 
 *** Variables ***
 ${checkout_txt}    Checkout: Complete
+${number_of_items}    3
 
 *** Test Cases ***
 Basket delete
@@ -12,7 +13,8 @@ Basket delete
    Cookies and category
    Sorting high to low
    Price sorting control
-   Add items to basket    3
+   Add items to basket    ${number_of_items}
+   Get Name of items    ${number_of_items}
    #Open basket
    #Price sorting control in basket
    #Delete from basket    3
