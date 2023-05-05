@@ -16,9 +16,9 @@ Setup Browser
 Cookies and category
     Click Element    ${cookie_agree}
     Click Text    Mobily
-    Click Text    Mobilne
-    Click Text    Smartfony
-    Click Text    Vsetko    Android
+    Click Text    Mobilné
+    Click Text    Smartfóny
+    Click Text    Všetko    Android
 
 Sorting high to low
     Drop Down    //select[contains(@class,'product_sort_container')]    Price (high to low)
