@@ -12,7 +12,7 @@ Basket delete
    Cookies and category
    Sorting high to low
    Price sorting control
-   #Add items to basket    3
+   Add items to basket    3
    #Open basket
    #Price sorting control in basket
    #Delete from basket    3

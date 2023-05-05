@@ -10,7 +10,7 @@ Library    Collections
 
 *** Keywords ***
 Setup Browser
-    OpenBrowser    about:blank    chrome
+    OpenBrowser    about:blank    chrome    options=add_experimental_option("detach", True)
     GoTo    https://www.tpd.sk/    
 
 Cookies and category
@@ -71,7 +71,12 @@ Add items to basket
 #Add 3 most expensive items to basket 
     [Arguments]    ${num_of_items}                      
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        Click Element    //button[contains(@data-test,'add-to-cart')]
+        ${element_num}    Evaluate    ${counter}+1
+        Click Element    //div[contains(@class,'products__item')][${element_num}]//button[contains(@class,'buy')]
+        IF    ($counter==3)
+            BREAK
+        END
+        Click Element    //a[contains(@data-dismiss,'modal')]
     END
 
 Open basket
