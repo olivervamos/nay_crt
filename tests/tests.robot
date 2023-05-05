@@ -9,8 +9,7 @@ ${checkout_txt}    Checkout: Complete
 *** Test Cases ***
 Basket delete
    [Documentation]    Delete all items in basket and check they were deleted
-   Get users credentials
-   Log into    ${STANDARD_USER_LOGIN}    ${PASSWORD}
+   
    Sorting high to low
    Price sorting control
    Add items to basket    3
