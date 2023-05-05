@@ -73,9 +73,10 @@ Get Name of items
     [Arguments]    ${num_of_items}
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
-        ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]
-        ${name}    Append To List    ${names_items}
+        ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]    between=???${SPACE}- 
+        Append To List    ${names_items}    ${name}
     END
+    Log To Console    ${names_items}
 
 Add items to basket
 #Add 3 most expensive items to basket 
@@ -90,7 +91,8 @@ Add items to basket
     END
 
 Open basket
-    Click Element    //a[contains(@class,'shopping_cart_link')]
+    Click Element    //span[contains(@class,'minicart')][1]//r-span[contains(@data-element,'cart')]
+    Click Text    Prejsť    Celková suma
 
 Delete from basket
     [Arguments]    ${num_delete}
