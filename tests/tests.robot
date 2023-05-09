@@ -17,9 +17,9 @@ Basket delete
    Add items to basket    ${number_of_items}
    Open basket
    Get Names of items in basket    ${number_of_items}
-   Should Be Equal    ${names_items}    ${names_items_basket}
-   #Delete from basket    3
-   #Verify No Element    //button[contains(@name,'remove')]
+   Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
+   Delete from basket    1
+   Verify No Text    ${DELETE_ITEM}
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful

@@ -2,13 +2,13 @@
 Library    QWeb
 Library    String
 Library    Collections
+Library    QForce
 
 *** Variables ***
 
 @{price_list}
 @{price_list_basket}
-@{names_items}
-@{names_items_basket}
+@{delete_items}
 
 *** Keywords ***
 Setup Browser
@@ -73,26 +73,25 @@ Price sorting control in basket
 
 Get Names of items
     [Arguments]    ${num_of_items}
+    ${NAMES_ITEMS}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
         ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]    between=???${SPACE}- 
-        Append To List    ${names_items}    ${name}
+        Append To List    ${NAMES_ITEMS}    ${name}
     END
-    #Set Test Variable    ${names_items}
-    Log To Console    ${names_items}
+    Set Test Variable    ${NAMES_ITEMS}
+    Log To Console    TOTO JE LIST PRED VLOZENIM DO KOSIKA> ${NAMES_ITEMS}
 
 Get Names of items in basket
     [Arguments]    ${num_of_items}
+    ${NAMES_ITEMS_BASKET}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
         ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${element_num}]//strong 
-        Append To List    ${names_items_basket}    ${name}
+        Append To List    ${NAMES_ITEMS_BASKET}    ${name}
     END
-    #Set Test Variable    ${names_items_basket}
-    Log To Console    ${names_items_basket}
-
-List of names Equal
-    Should Be Equal    ${names_items}    ${names_items_basket}    
+    Set Test Variable    ${NAMES_ITEMS_BASKET}
+    Log To Console    TOTO JE LIST POLOZIEK V KOSIKU> ${NAMES_ITEMS_BASKET}
 
 Add items to basket
 #Add 3 most expensive items to basket 
@@ -113,14 +112,11 @@ Open basket
 Delete from basket
     [Arguments]    ${num_delete}
     FOR    ${counter}    IN RANGE    ${num_delete}
-        Click Element    //button[contains(@name,'remove')]
+        ${DELETE_ITEM}    Get Slice From List    ${NAMES_ITEMS_BASKET}    ${counter}
+        Click Element    //a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
+        UseModal    on
+        ClickText    Ok
+        UseModal    off
     END
-
-Checkout and fill data
-    [Arguments]    ${surname}    ${lastname}    ${postal_code}
-    Click Element    //button[contains(@id,'checkout')]
-    Type Text    //input[contains(@id,'first-name')]    ${surname}
-    Type Text    //input[contains(@id,'last-name')]    ${lastname}
-    Type Text    //input[contains(@id,'postal-code')]    ${postal_code}
-    Click Element    //input[contains(@id,'continue')]
-    Click Element    //button[contains(@id,'finish')]    
+    Set Test Variable    ${DELETE_ITEM}
+    Log To Console    ${DELETE_ITEM}
