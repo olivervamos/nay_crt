@@ -119,4 +119,4 @@ Delete from basket
         UseModal    off
     END
     Set Test Variable    ${DELETE_ITEM}
-    Log To Console    ${DELETE_ITEM}
+    Log    ${DELETE_ITEM}
