@@ -71,9 +71,6 @@ Add items to basket
     FOR    ${counter}    IN RANGE    ${num_of_items}
         ${element_num}    Evaluate    ${counter}+1
         Click Element    //div[contains(@class,'products__item')][${element_num}]//button[contains(@class,'buy')]
-        #IF    ($counter==3)
-        #    BREAK
-        #END
         Click Element    //a[contains(@data-dismiss,'modal')]
     END
 
