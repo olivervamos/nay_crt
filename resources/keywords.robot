@@ -10,10 +10,8 @@ Library    QForce
 Setup Browser
     OpenBrowser    about:blank    chrome
     GoTo    https://www.tpd.sk/    
+    Click Element    //button[contains(@id,'AllowAll')]    #accept cookies
 
-Accept Cookies
-    Click Element    //button[contains(@id,'AllowAll')]
-    
 Navigate to category
     Hover Text    Počítače a smartfóny
     Click Text    Mobilné Telefóny    smartfóny Samsung
@@ -77,7 +75,8 @@ Add items to basket
     END
 
 Open basket
-    Click Element    //span[contains(@class,'minicart')][1]//r-span[contains(@data-element,'cart')]
+    Click Element    //span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
+    Sleep    1s
     Click Text    Prejsť    Celková suma
 
 Delete from basket and verify remove
@@ -96,7 +95,7 @@ Type search Text
     Type Text    //input[contains(@name, 'search')]    ${text_for_search}
     Click Element    //div[contains(@class, 'c-autocomplete__footer')]
      
-Verify text in every page
+Verify text in every item
     [Arguments]    ${verify_text}
     ${last_page}    Get Text    //div[contains(@class,'pager__count')]    between=???${SPACE}stránok
     FOR    ${counter}    IN RANGE    ${last_page}-1
@@ -108,5 +107,9 @@ Verify text in every page
         END
 
         Click Element    //a[contains(@rel,'next')]//i[contains(@class,'ico ico--chevron-right')]
-
     END
+
+No checkout
+    Click Text    Prejsť na fakturačné údaje
+    Sleep    1s
+    Verify No Text    Prejsť na výber dopravy a platby
