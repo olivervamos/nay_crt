@@ -78,6 +78,7 @@ Get Names of items
         ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]    between=???${SPACE}- 
         Append To List    ${names_items}    ${name}
     END
+    #Set Test Variable    ${names_items}
     Log To Console    ${names_items}
 
 Get Names of items in basket
@@ -87,6 +88,7 @@ Get Names of items in basket
         ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${element_num}]//strong 
         Append To List    ${names_items_basket}    ${name}
     END
+    #Set Test Variable    ${names_items_basket}
     Log To Console    ${names_items_basket}
 
 List of names Equal
