@@ -18,8 +18,7 @@ Basket delete
    Open basket
    Get Names of items in basket    ${number_of_items}
    Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
-   Delete from basket    2
-   Verify No Text    ${DELETE_ITEM}
+   Delete from basket and verify remove    2
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful
