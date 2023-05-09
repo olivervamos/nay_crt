@@ -8,7 +8,7 @@ Library    QForce
 
 *** Keywords ***
 Setup Browser
-    OpenBrowser    about:blank    chrome    options=add_experimental_option("detach", True)
+    OpenBrowser    about:blank    chrome
     GoTo    https://www.tpd.sk/    
 
 Accept Cookies
@@ -89,3 +89,8 @@ Delete from basket and verify remove
     #UseModal    off
     VerifyNoText    ${delete_item}
     Log    ${delete_item}
+
+Type search Text
+    [Arguments]    ${text_for_search}
+    TypeText    //input[contains(@name, 'search')]    ${text_for_search}
+    Click Element    //a[contains(@class, 'btn is-search js-autocomplete-search')]//i[contains(@class, 'ico--magnifying-glass')]

@@ -6,6 +6,7 @@ Test Teardown    CloseBrowser
 *** Variables ***
 ${checkout_txt}    Checkout: Complete
 ${number_of_items}    3
+${search_text}    samsung
 
 *** Test Cases ***
 Basket delete
@@ -24,6 +25,7 @@ Basket delete
 Search
     [Documentation]
     Accept Cookies
+    Type search Text    ${search_text}
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful
