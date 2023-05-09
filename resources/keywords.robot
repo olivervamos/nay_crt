@@ -107,8 +107,9 @@ Open basket
 
 Delete from basket and verify remove
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
-    ClickElement    //i[contains(@class,'ico--x')]
-    #UseModal
+    ClickElement    //div[contains(@class,'delete')]//i[contains(@class,'ico--x')]
+    UseModal    on
     ClickElement    //button[contains(@class,'confirm')]
+    UseModal    off
     VerifyNoText    ${delete_item}
     Log    ${delete_item}
