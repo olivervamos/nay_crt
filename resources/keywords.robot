@@ -114,7 +114,7 @@ Delete from basket
     FOR    ${counter}    IN RANGE    ${num_delete}
         Log    ${counter}
         ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
-        ClickElement    //a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
+        ClickElement    //i[contains(@class,'ico--x')]
         
         UseModal    on
         ClickText    Ok
