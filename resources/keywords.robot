@@ -117,7 +117,7 @@ Delete from basket
         ClickElement    //i[contains(@class,'ico--x')]
         
         UseModal    on
-        ClickText    Ok
+        ClickElement    //button[contains(@class,'confirm')]
         UseModal    off
     END
     Set Test Variable    ${DELETE_ITEM}
