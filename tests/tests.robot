@@ -17,7 +17,7 @@ Basket delete
    Add items to basket    ${number_of_items}
    Open basket
    Get Names of items in basket    ${number_of_items}
-   List of names Equal
+   Should Be Equal    ${names_items}    ${names_items_basket}
    #Delete from basket    3
    #Verify No Element    //button[contains(@name,'remove')]
 
