@@ -115,7 +115,6 @@ Delete from basket
         Log    ${counter}
         ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
         ClickElement    //a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
-        #ClickText    Odstrániť produkt z košíka?
         
         UseModal    on
         ClickText    Ok
