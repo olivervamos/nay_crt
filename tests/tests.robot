@@ -26,6 +26,7 @@ Search
     [Documentation]
     Accept Cookies
     Type search Text    ${search_text}
+    Type Alert    text
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful
