@@ -6,10 +6,6 @@ Library    QForce
 
 *** Variables ***
 
-@{price_list}
-@{price_list_basket}
-@{delete_items}
-
 *** Keywords ***
 Setup Browser
     OpenBrowser    about:blank    chrome    options=add_experimental_option("detach", True)
@@ -26,7 +22,7 @@ Sorting high to low
 Price sorting control
 #Create List of prices
     ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
-    
+    ${price_list}    Create List
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${element_num}    Evaluate    ${counter}+1
         ${xpath}    Set Variable    //div[contains(@class,'products__item')][${element_num}]//span[contains(@class,'number left')]
@@ -44,13 +40,13 @@ Price sorting control
            ${ListItem1}=    Get From List    ${price_list}    ${counter}
            ${ListItem2}=    Get From List    ${price_list}    ${counter+1}
            Should Be True    ${ListItem1}>=${ListItem2}
-           Log To Console    ${ListItem1}' and '${ListItem2}
+           Log    ${ListItem1}' and '${ListItem2}
        END
 
 Price sorting control in basket
 #Create List of prices
     ${elements_count}    Get Element Count    //div[contains(@class,'inventory_item_price')]
-
+    ${price_list_basket}    Create List
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${element_num}    Evaluate    ${counter}+1
         ${xpath}    Set Variable    //div[contains(@class,'cart__products__row ')][${element_num}]//r-span[contains(@data-type,'finalPriceVat')]
@@ -68,7 +64,7 @@ Price sorting control in basket
         ${ListItem1}=    Get From List    ${price_list_basket}    ${counter}
         ${ListItem2}=    Get From List    ${price_list_basket}    ${counter+1}
         Should Be True    ${ListItem1}>=${ListItem2}
-        Log To Console    ${ListItem1}' and '${ListItem2}
+        Log    ${ListItem1}' and '${ListItem2}
     END     
 
 Get Names of items
@@ -80,7 +76,7 @@ Get Names of items
         Append To List    ${NAMES_ITEMS}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS}
-    Log To Console    TOTO JE LIST PRED VLOZENIM DO KOSIKA> ${NAMES_ITEMS}
+    Log    List of items names after sorting> ${NAMES_ITEMS}
 
 Get Names of items in basket
     [Arguments]    ${num_of_items}
@@ -91,7 +87,7 @@ Get Names of items in basket
         Append To List    ${NAMES_ITEMS_BASKET}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS_BASKET}
-    Log To Console    TOTO JE LIST POLOZIEK V KOSIKU> ${NAMES_ITEMS_BASKET}
+    Log    List of items names in basket> ${NAMES_ITEMS_BASKET}
 
 Add items to basket
 #Add 3 most expensive items to basket 
