@@ -115,10 +115,8 @@ Delete from basket
         Log    ${counter}
         ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
         ClickElement    //i[contains(@class,'ico--x')]
-        
-        UseModal    on
+        #UseModal
         ClickElement    //button[contains(@class,'confirm')]
-        UseModal    off
     END
     Set Test Variable    ${DELETE_ITEM}
     Log    ${DELETE_ITEM}
