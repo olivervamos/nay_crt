@@ -114,10 +114,9 @@ Delete from basket
     FOR    ${counter}    IN RANGE    ${num_delete}
         Log    ${counter}
         ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
-        ClickText    Odstrániť produkt z košíka?
+        ClickElement    //a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
+        #ClickText    Odstrániť produkt z košíka?
         
-        #xpath//a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
-
         UseModal    on
         ClickText    Ok
         UseModal    off
