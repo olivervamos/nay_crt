@@ -113,7 +113,7 @@ Delete from basket
     [Arguments]    ${num_delete}
     FOR    ${counter}    IN RANGE    ${num_delete}
         Log    ${counter}
-        ${DELETE_ITEM}    Get Slice From List    ${NAMES_ITEMS_BASKET}    ${counter}
+        ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
         Click Element    //a[contains(@title,'Odstrániť')]//i[contains(@class,'ico--x')]
         UseModal    on
         ClickText    Ok
