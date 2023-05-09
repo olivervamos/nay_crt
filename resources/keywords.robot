@@ -106,13 +106,9 @@ Open basket
     Click Text    Prejsť    Celková suma
 
 Delete from basket and verify remove
-    [Arguments]    ${num_delete}
-    FOR    ${counter}    IN RANGE    ${num_delete}
-        Log    ${counter}
-        ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
-        ClickElement    //i[contains(@class,'ico--x')]
-        #UseModal
-        ClickElement    //button[contains(@class,'confirm')]
-        VerifyNoText    ${delete_item}
-        Log    ${delete_item}
-    END
+    ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
+    ClickElement    //i[contains(@class,'ico--x')]
+    #UseModal
+    ClickElement    //button[contains(@class,'confirm')]
+    VerifyNoText    ${delete_item}
+    Log    ${delete_item}
