@@ -11,8 +11,10 @@ Setup Browser
     OpenBrowser    about:blank    chrome    options=add_experimental_option("detach", True)
     GoTo    https://www.tpd.sk/    
 
-Cookies and category
+Accept Cookies
     Click Element    //button[contains(@id,'AllowAll')]
+    
+Navigate to category
     Hover Text    Počítače a smartfóny
     Click Text    Mobilné Telefóny    smartfóny Samsung
 

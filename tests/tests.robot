@@ -10,7 +10,8 @@ ${number_of_items}    3
 *** Test Cases ***
 Basket delete
    [Documentation]    Delete all items in basket and check they were deleted
-   Cookies and category
+   Accept Cookies
+   Navigate to category
    Sorting high to low
    Price sorting control
    Get Names of items    ${number_of_items}
@@ -19,6 +20,10 @@ Basket delete
    Get Names of items in basket    ${number_of_items}
    Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
    Delete from basket and verify remove
+
+Search
+    [Documentation]
+    Accept Cookies
 
 Checkout
    [Documentation]    Completes the order and checks if the order was successful
