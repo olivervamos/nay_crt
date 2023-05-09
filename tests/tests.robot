@@ -28,6 +28,6 @@ Search
 
 Checkout empty basket
    [Documentation]   
-   Sleep    1s 
+   Sleep    2s 
    Open basket
    No checkout
