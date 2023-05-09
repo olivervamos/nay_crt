@@ -92,5 +92,21 @@ Delete from basket and verify remove
 
 Type search Text
     [Arguments]    ${text_for_search}
-    TypeText    //input[contains(@name, 'search')]    ${text_for_search}
-    Click Element    //a[contains(@class, 'btn is-search js-autocomplete-search')]//i[contains(@class, 'ico--magnifying-glass')]
+    Click Element    //input[contains(@name, 'search')]
+    Type Text    //input[contains(@name, 'search')]    ${text_for_search}
+    Click Element    //div[contains(@class, 'c-autocomplete__footer')]
+     
+Verify text in every page
+    [Arguments]    ${verify_text}
+    ${last_page}    Get Text    //div[contains(@class,'pager__count')]    between=???${SPACE}stránok
+    FOR    ${counter}    IN RANGE    ${last_page}-1
+        
+        ${elements_count}    Get Element Count    //div[contains(@class, 'products__item')]
+        FOR    ${counter}    IN RANGE    ${elements_count}
+            Verify Element Text    //div[contains(@class, 'products__item')][${counter}+1]//a[contains(@class, 'products__name')]    
+            ...    ${verify_text}
+        END
+
+        Click Element    //a[contains(@rel,'next')]//i[contains(@class,'ico ico--chevron-right')]
+
+    END
