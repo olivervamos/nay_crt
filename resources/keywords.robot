@@ -105,14 +105,14 @@ Open basket
     Click Element    //span[contains(@class,'minicart')][1]//r-span[contains(@data-element,'cart')]
     Click Text    Prejsť    Celková suma
 
-Delete from basket
+Delete from basket and verify remove
     [Arguments]    ${num_delete}
     FOR    ${counter}    IN RANGE    ${num_delete}
         Log    ${counter}
-        ${DELETE_ITEM}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
+        ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${counter}
         ClickElement    //i[contains(@class,'ico--x')]
         #UseModal
         ClickElement    //button[contains(@class,'confirm')]
+        VerifyNoText    ${delete_item}
+        Log    ${delete_item}
     END
-    Set Test Variable    ${DELETE_ITEM}
-    Log    ${DELETE_ITEM}
