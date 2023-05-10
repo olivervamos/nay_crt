@@ -29,9 +29,9 @@ Search
     Verify text in every item    ${search_text}
 
 Checkout empty basket
-   [Documentation]   
-   Open basket
-   No checkout
+    [Documentation]   
+    Open basket
+    No checkout
     
 
     
