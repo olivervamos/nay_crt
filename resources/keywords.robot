@@ -93,9 +93,8 @@ Delete from basket and verify remove
 
 Type search Text
     [Arguments]    ${text_for_search}
-    Click Element    //input[contains(@name, 'search')]
-    Type Text    //input[contains(@name, 'search')]    ${text_for_search}
-    Click Element    //div[contains(@class, 'c-autocomplete__footer')]
+    TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
+    ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
      
 Verify text in every item
     [Arguments]    ${verify_text}
