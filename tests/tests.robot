@@ -23,7 +23,6 @@ Basket delete
 
 Search
     [Documentation]
-    #Click Element    //input[contains(@name, 'search')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
     #TypeText    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    ${search_text}
     #PressKey    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    {ENTER}
     #ClickText    Zobraziť všetky výsledky
