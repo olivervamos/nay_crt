@@ -84,7 +84,7 @@ Open basket
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
 Delete from basket and verify remove  #${position_item} start from 0.
     [Arguments]    ${position_item}
-    ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${positio_item}
+    ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${position_item}
     ClickElement    //div[contains(@class,'cart__products__row ')][${position_item}+1]//i[contains(@class,'ico--x')]
     #Sleep    0.5s
     ClickElement    //button[contains(@class,'confirm')]
