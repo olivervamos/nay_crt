@@ -30,8 +30,6 @@ Search
 
 Checkout empty basket
    [Documentation]   
-   #ClickText    0,00 €
-   #ClickText    Prejsť do nákupného košíka
    Open basket
    No checkout
     
