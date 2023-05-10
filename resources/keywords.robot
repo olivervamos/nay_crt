@@ -98,7 +98,7 @@ Type search Text
      
 Verify text in every item
     [Arguments]    ${verify_text}
-    ${last_page}    Get Text    //div[contains(@class,'pager__count')]    timeout=20s    between=???${SPACE}stránok    anchor=stránok
+    ${last_page}    Get Text    //div[contains(@class,'pager__count')]/span    between=???${SPACE}stránok    anchor=stránok
     FOR    ${counter}    IN RANGE    ${last_page}-1
         
         ${elements_count}    Get Element Count    //div[contains(@class, 'products__item')]
