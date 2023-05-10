@@ -17,7 +17,7 @@ Basket delete
    Get Names of items    ${number_of_items}
    Add items to basket    ${number_of_items}
    Open basket
-   #Get Names of items in basket    ${number_of_items}
+   Get Names of items in basket    ${number_of_items}
    #Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
    Verify item name in basket    ${number_of_items}
    Delete from basket and verify remove
