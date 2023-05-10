@@ -77,7 +77,7 @@ Add items to basket
 Open basket
     Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    
     #//span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
-    Sleep    1s
+    #Sleep    1s
     Click Text    Prejsť do nákupného košíka    
 
 Delete from basket and verify remove
