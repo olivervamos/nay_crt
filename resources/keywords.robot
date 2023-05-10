@@ -86,7 +86,7 @@ Delete from basket and verify remove  #${position_item} start from 0.
     [Arguments]    ${position_item}
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${position_item}
     ClickElement    //div[contains(@class,'cart__products__row ')][${position_item}+1]//i[contains(@class,'ico--x')]
-    #Sleep    0.5s
+    Sleep    0.5s
     ClickElement    //button[contains(@class,'confirm')]
     VerifyNoText    ${delete_item}
     Log    ${delete_item}
