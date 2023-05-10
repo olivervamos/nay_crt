@@ -23,11 +23,7 @@ Basket delete
 
 Search
     [Documentation]
-    #TypeText    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    ${search_text}
-    #PressKey    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    {ENTER}
-    #ClickText    Zobraziť všetky výsledky
-    TypeText    //input[contains(@name, 'search')]    ${search_text}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
+    Type search Text   ${search_text} 
     Verify text in every item    ${search_text}
 
 Checkout empty basket
