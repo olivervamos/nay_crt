@@ -20,7 +20,7 @@ Basket delete
    Get Names of items in basket    ${number_of_items}
    #Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
    Verify item name in basket    ${number_of_items}
-   Delete from basket and verify remove
+   Delete from basket and verify remove    0
 
 Search
     [Documentation]
