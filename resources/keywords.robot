@@ -46,7 +46,6 @@ Get Names of items
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        #${element_num}    Evaluate    ${counter}+1
         ${name}    Get Text    //div[contains(@class,'products__item')][${counter}+1]//div[contains(@class,'valign')]    between=???${SPACE}- 
         Append To List    ${NAMES_ITEMS}    ${name}
     END
@@ -57,7 +56,6 @@ Get Names of items in basket
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS_BASKET}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        #${element_num}    Evaluate    ${counter}+1
         ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${counter}+1]//strong 
         Append To List    ${NAMES_ITEMS_BASKET}    ${name}
     END
@@ -76,23 +74,19 @@ Add items to basket
 #Add 3 most expensive items to basket 
     [Arguments]    ${num_of_items}                      
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        ${element_num}    Evaluate    ${counter}+1
-        Click Element    //div[contains(@class,'products__item')][${element_num}]//button[contains(@class,'buy')]
+        #${element_num}    Evaluate    ${counter}+1
+        Click Element    //div[contains(@class,'products__item')][${counter}+1]//button[contains(@class,'buy')]
         Click Element    //a[contains(@data-dismiss,'modal')]
     END
 
 Open basket
     Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')] 
-    #UseModal    on
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
-    #UseModal    off
 Delete from basket and verify remove
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
     ClickElement    //div[contains(@class,'delete')]//i[contains(@class,'ico--x')]
-    #UseModal    on
     Sleep    0.5s
     ClickElement    //button[contains(@class,'confirm')]
-    #UseModal    off
     VerifyNoText    ${delete_item}
     Log    ${delete_item}
 
