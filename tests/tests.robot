@@ -23,7 +23,8 @@ Basket delete
 
 Search
     [Documentation]
-    Type search Text    ${search_text}
+    TypeText    Napíš číslo produktu alebo názov    ${search_text}
+    ClickText    Zobraziť všetky výsledky
     Verify text in every item    ${search_text}
 
 Checkout empty basket
@@ -31,3 +32,4 @@ Checkout empty basket
    Sleep    2s 
    Open basket
    No checkout
+    
