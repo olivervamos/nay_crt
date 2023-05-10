@@ -75,12 +75,10 @@ Add items to basket
     END
 
 Open basket
-    Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    
-    #//span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
-    #Sleep    1s
-    UseModal    on
+    Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')] 
+    #UseModal    on
     Click Text    Prejsť do nákupného košíka    
-    UseModal    off
+    #UseModal    off
 Delete from basket and verify remove
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
     ClickElement    //div[contains(@class,'delete')]//i[contains(@class,'ico--x')]
