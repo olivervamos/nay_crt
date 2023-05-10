@@ -83,8 +83,10 @@ Open basket
     Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')] 
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
 Delete from basket and verify remove
-    ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
-    ClickElement    //div[contains(@class,'delete')]//i[contains(@class,'ico--x')]
+    [Arguments]    ${positio_item}
+    ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${positio_item}
+    #ClickElement    //div[contains(@class,'delete')]//i[contains(@class,'ico--x')]
+    ClickElement    //div[contains(@class,'cart__products__row ')][${positio_item}+1]//i[contains(@class,'ico--x')]
     Sleep    0.5s
     ClickElement    //button[contains(@class,'confirm')]
     VerifyNoText    ${delete_item}
