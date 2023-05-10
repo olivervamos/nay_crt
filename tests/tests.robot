@@ -24,7 +24,9 @@ Basket delete
 Search
     [Documentation]
     Click Element    //input[contains(@name, 'search')]
-    TypeText    Napíš číslo produktu alebo názov    ${search_text}
+    #TypeText    Napíš číslo produktu alebo názov    ${search_text}
+    #${input_search}    Set Variable    //input[@name='search']
+    TypeText    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    ${search_text}    
     ClickText    Zobraziť všetky výsledky
     Verify text in every item    ${search_text}
 
