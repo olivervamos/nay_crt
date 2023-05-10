@@ -77,7 +77,7 @@ Add items to basket
 Open basket
     Click Element    //span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
     Sleep    1s
-    Click Element    a[title='Prejsť do nákupného košíka']    
+    Click Text    Prejsť do nákupného košíka    
 
 Delete from basket and verify remove
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    0
