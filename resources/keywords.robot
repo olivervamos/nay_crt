@@ -75,7 +75,8 @@ Add items to basket
     END
 
 Open basket
-    Click Element    //span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
+    Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    
+    #//span[contains(@class,'minicart')]//r-span[contains(@data-element,'cart')]
     Sleep    1s
     Click Text    Prejsť do nákupného košíka    
 
