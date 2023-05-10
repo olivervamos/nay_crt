@@ -46,8 +46,8 @@ Get Names of items
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        ${element_num}    Evaluate    ${counter}+1
-        ${name}    Get Text    //div[contains(@class,'products__item')][${element_num}]//div[contains(@class,'valign')]    between=???${SPACE}- 
+        #${element_num}    Evaluate    ${counter}+1
+        ${name}    Get Text    //div[contains(@class,'products__item')][${counter}+1]//div[contains(@class,'valign')]    between=???${SPACE}- 
         Append To List    ${NAMES_ITEMS}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS}
@@ -57,8 +57,8 @@ Get Names of items in basket
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS_BASKET}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        ${element_num}    Evaluate    ${counter}+1
-        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${element_num}]//strong 
+        #${element_num}    Evaluate    ${counter}+1
+        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${counter}+1]//strong 
         Append To List    ${NAMES_ITEMS_BASKET}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS_BASKET}
