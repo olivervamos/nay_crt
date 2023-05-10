@@ -29,7 +29,10 @@ Search
 
 Checkout empty basket
    [Documentation]   
-   Sleep    2s 
-   Open basket
+   ClickText    0,00 €
+   ClickText    Prejsť do nákupného košíka
+   #Open basket
    No checkout
+    
+
     
