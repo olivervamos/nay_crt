@@ -24,9 +24,7 @@ Basket delete
 Search
     [Documentation]
     Type search Text   ${search_text}
-    #TypeText    //input[contains(@name, 'search')]    ${search_text}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    #ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    Sleep    1s 
+    #Sleep    1s 
     Verify text in every item    ${search_text}
 
 Checkout empty basket
