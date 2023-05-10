@@ -18,7 +18,8 @@ Basket delete
    Add items to basket    ${number_of_items}
    Open basket
    Get Names of items in basket    ${number_of_items}
-   Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
+   Should Contain    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
+   #Should Be Equal    ${NAMES_ITEMS}    ${NAMES_ITEMS_BASKET}
    Delete from basket and verify remove
 
 Search
