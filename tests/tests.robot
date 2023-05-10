@@ -25,8 +25,9 @@ Search
     [Documentation]
     Click Element    //input[contains(@name, 'search')]
     TypeText    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    ${search_text}
-    PressKey    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    {ENTER}
+    #PressKey    //form[contains(@name, 'header_search')]//input[contains(@type, 'text')]    {ENTER}
     #ClickText    Zobraziť všetky výsledky
+    ClickElement
     Verify text in every item    ${search_text}
 
 Checkout empty basket
