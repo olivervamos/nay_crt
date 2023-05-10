@@ -24,8 +24,7 @@ Price sorting control
     ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
     ${price_list}    Create List
     FOR    ${counter}    IN RANGE    ${elements_count}
-        ${element_num}    Evaluate    ${counter}+1
-        ${xpath}    Set Variable    //div[contains(@class,'products__item')][${element_num}]//span[contains(@class,'number left')]
+        ${xpath}    Set Variable    //div[contains(@class,'products__item')][${counter}+1]//span[contains(@class,'number left')]
         ${price_txt}    Get Text    ${xpath}    between=???€
         ${price_txt2}    Remove String    ${price_txt}    ${SPACE}
         ${price_txt3}    Fetch From Left    ${price_txt2}    ,
@@ -35,10 +34,10 @@ Price sorting control
     #Price sorting control
     ${ListCount-1}=    Evaluate    ${elements_count}-1
        FOR    ${counter}    IN RANGE    ${elements_count}
-           ${counter+1}=    Evaluate    ${counter}+1
+           #${counter+1}=    Evaluate    ${counter}+1
            IF    $counter == ${ListCount-1}    BREAK
            ${ListItem1}=    Get From List    ${price_list}    ${counter}
-           ${ListItem2}=    Get From List    ${price_list}    ${counter+1}
+           ${ListItem2}=    Get From List    ${price_list}    ${counter}+1
            Should Be True    ${ListItem1}>=${ListItem2}
            Log    ${ListItem1}' and '${ListItem2}
        END
