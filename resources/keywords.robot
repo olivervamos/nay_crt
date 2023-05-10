@@ -64,7 +64,15 @@ Get Names of items in basket
     END
     Set Test Variable    ${NAMES_ITEMS_BASKET}
     Log    List of items names in basket> ${NAMES_ITEMS_BASKET}
-
+    
+Verify item name in basket
+    [Arguments]    ${num_of_items}
+    FOR    ${counter}    IN RANGE    ${num_of_items}
+        ${txt_for_verify}    Get From List    ${NAMES_ITEMS}    ${counter}
+        VerifyText    ${txt_for_verify}
+        Log    ${txt_for_verify}
+    END
+    
 Add items to basket
 #Add 3 most expensive items to basket 
     [Arguments]    ${num_of_items}                      
