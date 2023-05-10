@@ -34,10 +34,10 @@ Price sorting control
     #Price sorting control
     ${ListCount-1}=    Evaluate    ${elements_count}-1
        FOR    ${counter}    IN RANGE    ${elements_count}
-           #${counter+1}=    Evaluate    ${counter}+1
+           ${counter+1}=    Evaluate    ${counter}+1
            IF    $counter == ${ListCount-1}    BREAK
            ${ListItem1}=    Get From List    ${price_list}    ${counter}
-           ${ListItem2}=    Get From List    ${price_list}    ${counter}+1
+           ${ListItem2}=    Get From List    ${price_list}    ${counter+1}
            Should Be True    ${ListItem1}>=${ListItem2}
            Log    ${ListItem1}' and '${ListItem2}
        END
