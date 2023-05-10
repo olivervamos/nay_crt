@@ -23,6 +23,7 @@ Basket delete
 
 Search
     [Documentation]
+    Click Element    //input[contains(@name, 'search')]
     TypeText    Napíš číslo produktu alebo názov    ${search_text}
     ClickText    Zobraziť všetky výsledky
     Verify text in every item    ${search_text}
