@@ -93,7 +93,8 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    ClickElement    //div[@class='container relative']
+    ${xpath2}    Set Variable    //div[@class='container relative']
+    ClickElement    ${xpath2}  
     ${xpath}    Set Variable    //a[@data-keyword='${text_for_search}']/i
     HoverElement    ${xpath}
     ClickElement    ${xpath}
