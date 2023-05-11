@@ -94,7 +94,8 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    PressKey    Samsung    {ENTER}
+    PressKey    //div[contains(@class,'den-xs hidden-sm')]    {ENTER}    anchor=//input[contains(@name, 'search')]
+    ClickText    Zobraziť všetky výsledky
     #ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
      
 Verify text in every item
