@@ -45,9 +45,9 @@ iteracia
     Navigate to category
     ${names}    Create List
     ${elements}    GetWebelement    //div[contains(@class,'products__item')]//div[contains(@class,'valign')]
-       FOR    ${element}    IN    ${elements}
+       FOR    ${element}    IN    @{elements}
        
-           log ${element}
+           log    ${element}
 
        END
 
