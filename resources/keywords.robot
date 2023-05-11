@@ -94,9 +94,9 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    Sleep    2s
-    #ClickElement    //div[contains(@class,'btn-group bootstrap-select js-autocomplete-select hidden-cxs hidden-xs hidden-sm')]
+    PressKey    //input[contains(@name, 'search')]    {ENTER}
     ClickElement    //a[contains(@data-keyword, '${text_for_search}')]
+    #ClickElement    //div[contains(@class,'btn-group bootstrap-select js-autocomplete-select hidden-cxs hidden-xs hidden-sm')]
     #ClickElement    //a[@title="Zobraziť všetky výsledky vyhľadávania"]
     #${xpath}    Set Variable    (//a[@href="/vyhladavanie?search="])[1]
     #ClickElement    ${xpath}    anchor=//a[@title="Registrácia"]
