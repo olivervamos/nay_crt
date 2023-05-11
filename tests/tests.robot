@@ -28,6 +28,13 @@ Search
     Sleep    5s
     Verify text in every item    ${search_text}
 
+Checkout empty basket 2
+    Navigate to category
+    Add items to basket    1
+    Open basket
+    Delete from basket and verify remove    0
+    No checkout
+
 Checkout empty basket
     [Documentation]   
     Open basket
