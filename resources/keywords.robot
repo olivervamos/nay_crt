@@ -94,6 +94,7 @@ Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
     ${xpath}    Set Variable    //a[@data-keyword='${text_for_search}']/i
+    HoverElement    ${xpath}
     ClickElement    ${xpath}
 
     #${xpath}    Set Variable    //form[@name="header_search"]/div/a
