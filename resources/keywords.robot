@@ -21,6 +21,8 @@ Sorting high to low
 Price sorting control
     #Create List of prices
     ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
+    ${list_elements}    GetWebelement    //div[contains(@class,'products__item')]
+    Log    ${list_elements}
     ${price_list}    Create List
     FOR    ${counter}    IN RANGE    ${elements_count}
         ${xpath}    Set Variable    //div[contains(@class,'products__item')][${counter}+1]//span[contains(@class,'number left')]
