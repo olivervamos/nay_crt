@@ -111,7 +111,7 @@ Verify text in every item
     [Arguments]    ${verify_text}
     #${last_page}    Get Text    //div[contains(@class,'pager__count')]/span    between=???${SPACE}stránok    anchor=stránok
     ${xpath}    Set Variable    //li[@class= 'pager__item'][last()]
-    ${last_page}    Get Text    ${xpath}    timeout=10s
+    ${last_page}    Get Text    ${xpath}    timeout=30s
     SetConfig    CaseInsensitive    True
     FOR    ${counter}    IN RANGE    ${last_page}-1
         
