@@ -47,7 +47,9 @@ iteracia
     ${elements}    GetWebelement    //div[contains(@class,'products__item')]//div[contains(@class,'valign')]
        FOR    ${element}    IN    @{elements}
        
-           log    ${element}
+           ${name}    Get Text    ${element}
+           #log    ${element}
+           log    ${name}
 
        END
 
