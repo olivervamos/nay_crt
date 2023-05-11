@@ -94,7 +94,9 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    PressKey    //input[contains(@name, 'search')]    {ENTER}
+    ${xpath}    Set Variable    //div[@class= 'header__search header__search--default js-header-search']//i[@class= 'ico ico--magnifying-glass']
+    ClickElement    ${xpath}
+    #PressKey    //input[contains(@name, 'search')]    {ENTER}
     #ClickText    Zobraziť všetky výsledky
     #ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
      
