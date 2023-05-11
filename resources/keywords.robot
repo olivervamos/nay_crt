@@ -80,7 +80,6 @@ Add items to basket
 
 Open basket
     Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')]
-    HoverElement    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')]
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
 Delete from basket and verify remove  #${position_item} start from 0.
     [Arguments]    ${position_item}
@@ -110,7 +109,7 @@ Verify text in every item
     [Arguments]    ${verify_text}
     #${last_page}    Get Text    //div[contains(@class,'pager__count')]/span    between=???${SPACE}stránok    anchor=stránok
     ${xpath}    Set Variable    //li[@class= 'pager__item'][last()]
-    ${last_page}    Get Text    ${xpath}
+    ${last_page}    Get Text    ${xpath}    timeout=10s
     SetConfig    CaseInsensitive    True
     FOR    ${counter}    IN RANGE    ${last_page}-1
         
