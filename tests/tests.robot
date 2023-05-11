@@ -25,6 +25,7 @@ Basket delete
 Search
     [Documentation]
     Type search Text   ${search_text}
+    Sleep    2s
     Verify text in every item    ${search_text}
 
 Checkout empty basket 2
