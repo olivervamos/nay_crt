@@ -41,5 +41,15 @@ Checkout empty basket
     Open basket
     No checkout
     
+iteracia
+    Navigate to category
+    ${names}    Create List
+    ${elements}    GetWebelement    //div[contains(@class,'products__item')]//div[contains(@class,'valign')]
+       FOR    ${element}    IN    ${elements}
+       
+           log ${element}
 
-    
+       END
+
+
+  
