@@ -20,7 +20,7 @@ Sorting high to low
     Click Text    Od najdrahšieho
     
 Price sorting control
-#Create List of prices
+    #Create List of prices
     ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
     ${price_list}    Create List
     FOR    ${counter}    IN RANGE    ${elements_count}
