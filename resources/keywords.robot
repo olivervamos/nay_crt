@@ -94,7 +94,7 @@ Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
     ${xpath}    Set Variable    (//a[@href="/vyhladavanie?search="])[1]
-    ClickElement    ${xpath}    timeout=20s
+    ClickElement    ${xpath}    anchor=//a[@title="Registrácia"]
     #ClickElement    locator=(//a[@href="/vyhladavanie?search="])[1]
     #PressKey    //input[contains(@name, 'search')]    {ENTER}
     #ClickText    Zobraziť všetky výsledky
