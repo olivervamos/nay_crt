@@ -32,6 +32,7 @@ Checkout empty basket 2
     Navigate to category
     Add items to basket    1
     Open basket
+    Get Names of items in basket    1
     Delete from basket and verify remove    0
     No checkout
 
