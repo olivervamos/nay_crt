@@ -93,7 +93,7 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    ClickText    Zobraziť všetky výsledky
+    ClickElement    //a[@title="Zobraziť všetky výsledky vyhľadávania"]
     #${xpath}    Set Variable    (//a[@href="/vyhladavanie?search="])[1]
     #ClickElement    ${xpath}    anchor=//a[@title="Registrácia"]
     #ClickElement    locator=(//a[@href="/vyhladavanie?search="])[1]
