@@ -94,7 +94,8 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    ClickElement    //a[@data-keyword='${text_for_search}']
+    ${xpath}    Set Variable    //a[@data-keyword='${text_for_search}']
+    ClickElement    ${xpath}
     #ClickElement    //a[contains(@data-keyword,'${text_for_search}')]
     #ClickElement    //div[contains(@class,'btn-group bootstrap-select js-autocomplete-select hidden-cxs hidden-xs hidden-sm')]
     #ClickElement    //a[@title="Zobraziť všetky výsledky vyhľadávania"]
