@@ -80,7 +80,7 @@ Add items to basket
 
 Open basket
     Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')]
-    Sleep    2s 
+    HoverElement    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')]
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
 Delete from basket and verify remove  #${position_item} start from 0.
     [Arguments]    ${position_item}
