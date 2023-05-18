@@ -20,6 +20,3 @@ def price_sorting_control(): #Create List of prices
         logging.info('toto je prvy index {} a toto je druhy index {}'.format(prices[i], prices[i+1]))
         if prices[i] < prices[i+1]:
             raise AssertionError('sorting of items is not corect form high to low')
-        
-def wait_until_visible(xpath):
-    ElementKeywords.element_should_be_visible(ElementKeywords, xpath)
