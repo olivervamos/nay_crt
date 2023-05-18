@@ -25,9 +25,21 @@ Basket delete
 Search
     [Documentation]
     Type search Text   ${search_text}
+    Sleep    5s 
     Verify text in every item    ${search_text}
+
+Checkout empty basket 2
+    Navigate to category
+    Add items to basket    1
+    Open basket
+    Get Names of items in basket    1
+    Delete from basket and verify remove    0
+    No checkout
 
 Checkout empty basket
     [Documentation]   
     Open basket
     No checkout
+    
+
+    
