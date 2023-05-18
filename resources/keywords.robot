@@ -2,14 +2,14 @@
 Library    QWeb
 Library    String
 Library    Collections
-Library    QForce
 
 *** Variables ***
+${url_default}    https://www.tpd.sk/
 
 *** Keywords ***
 Setup Browser
     OpenBrowser    about:blank    chrome
-    GoTo    https://www.tpd.sk/    
+    GoTo    ${url_default}        
     Click Element    //button[contains(@id,'AllowAll')]    #accept cookies
 
 Navigate to category
@@ -80,8 +80,19 @@ Add items to basket
     END
 
 Open basket
-    Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=//a[contains(@title,'Prihlásenie')] 
+    ${xpath_before}    Set Variable      //div[@class='header__top ']//a[@class='btn']
+    ${xpath_after}    Set Variable    //div[contains(@style,'block')]//a[@class='btn']
+    ${curent_URL}    Get Url
+
+    IF    $curent_URL != $url_default
+        Click Element    ${xpath_after}
+    ELSE
+        Sleep    2s
+        Click Element    ${xpath_before}    timeout=10s
+    END
+    
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
+
 Delete from basket and verify remove  #${position_item} start from 0.
     [Arguments]    ${position_item}
     ${delete_item}    Get From List    ${NAMES_ITEMS_BASKET}    ${position_item}
@@ -94,7 +105,8 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    PressKey    //input[contains(@name, 'search')]    {ENTER}
+    TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
+    PressKey    //input[contains(@name, 'search')]    {ENTER}    timeout=5s
     #ClickText    Zobraziť všetky výsledky
     #ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
      
