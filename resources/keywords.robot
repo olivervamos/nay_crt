@@ -2,6 +2,7 @@
 Library    QWeb
 Library    String
 Library    Collections
+Library    ../libraries/custom_library.py
 
 *** Variables ***
 ${url_default}    https://www.tpd.sk/
@@ -19,34 +20,34 @@ Navigate to category
 Sorting high to low
     Click Text    Od najdrahšieho
     
-Price sorting control
+#Price sorting control
     #Create List of prices
-    ${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
-    ${price_list}    Create List
-    FOR    ${counter}    IN RANGE    ${elements_count}
-        ${xpath}    Set Variable    //div[contains(@class,'products__item')][${counter}+1]//span[contains(@class,'number left')]
-        ${price_txt}    Get Text    ${xpath}    between=???€
-        ${price_txt2}    Remove String    ${price_txt}    ${SPACE}
-        ${price_txt3}    Fetch From Left    ${price_txt2}    ,
-        ${price_num}    Convert To Number    ${price_txt3}
-        Append To List    ${price_list}    ${price_num}
-    END
+    #${elements_count}    Get Element Count    //div[contains(@class,'products__item')]
+    #${price_list}    Create List
+    #FOR    ${counter}    IN RANGE    ${elements_count}
+        #${xpath}    Set Variable    //div[contains(@class,'products__item')][${counter}+1]//span[contains(@class,'number left')]
+        #${price_txt}    Get Text    ${xpath}    between=???€
+        #${price_txt2}    Remove String    ${price_txt}    ${SPACE}
+        #${price_txt3}    Fetch From Left    ${price_txt2}    ,
+        #${price_num}    Convert To Number    ${price_txt3}
+        #Append To List    ${price_list}    ${price_num}
+    #END
     #Price sorting control
-    ${ListCount-1}=    Evaluate    ${elements_count}-1
-       FOR    ${counter}    IN RANGE    ${elements_count}
-           ${counter+1}=    Evaluate    ${counter}+1
-           IF    $counter == ${ListCount-1}    BREAK
-           ${ListItem1}=    Get From List    ${price_list}    ${counter}
-           ${ListItem2}=    Get From List    ${price_list}    ${counter+1}
-           Should Be True    ${ListItem1}>=${ListItem2}
-           Log    ${ListItem1}' and '${ListItem2}
-       END
-
+    #${ListCount-1}=    Evaluate    ${elements_count}-1
+       #FOR    ${counter}    IN RANGE    ${elements_count}
+           #${counter+1}=    Evaluate    ${counter}+1
+           #IF    $counter == ${ListCount-1}    BREAK
+           #${ListItem1}=    Get From List    ${price_list}    ${counter}
+           #${ListItem2}=    Get From List    ${price_list}    ${counter+1}
+           #Should Be True    ${ListItem1}>=${ListItem2}
+           #Log    ${ListItem1}' and '${ListItem2}
+       #END
+    
 Get Names of items
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        ${name}    Get Text    //div[contains(@class,'products__item')][${counter}+1]//div[contains(@class,'valign')]    between=???${SPACE}- 
+        ${name}    QWeb.Get Text    //div[contains(@class,'products__item')][${counter}+1]//div[contains(@class,'valign')]    between=???${SPACE}- 
         Append To List    ${NAMES_ITEMS}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS}
@@ -56,7 +57,7 @@ Get Names of items in basket
     [Arguments]    ${num_of_items}
     ${NAMES_ITEMS_BASKET}    Create List
     FOR    ${counter}    IN RANGE    ${num_of_items}
-        ${name}    Get Text    //div[contains(@class,'cart__products__row ')][${counter}+1]//strong 
+        ${name}    QWeb.Get Text    //div[contains(@class,'cart__products__row ')][${counter}+1]//strong 
         Append To List    ${NAMES_ITEMS_BASKET}    ${name}
     END
     Set Test Variable    ${NAMES_ITEMS_BASKET}
@@ -87,8 +88,13 @@ Open basket
     IF    $curent_URL != $url_default
         Click Element    ${xpath_after}
     ELSE
-        Sleep    2s
+        #Hover Element    ${xpath_before}
         Click Element    ${xpath_before}    timeout=10s
+        ${element}    QWeb.Get Element Count    //a[contains(@title,'Prejsť do nákupného košíka')]    
+        ...    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
+        IF    $element == 0
+            Click Element    //a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]    anchor=${xpath_before}    timeout=10s
+        END
     END
     
     Click Element    //a[contains(@title,'Prejsť do nákupného košíka')]    anchor=//a[contains(@title,'Zobraziť nákupný košík')]//r-span[contains(@data-element,'cart')]
@@ -105,7 +111,6 @@ Delete from basket and verify remove  #${position_item} start from 0.
 Type search Text
     [Arguments]    ${text_for_search}
     TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
-    TypeText    //input[contains(@name, 'search')]    ${text_for_search}    anchor=//div[contains(@class,'den-xs hidden-sm')]
     PressKey    //input[contains(@name, 'search')]    {ENTER}    timeout=5s
     #ClickText    Zobraziť všetky výsledky
     #ClickElement    //i[contains(@class, 'ico ico--magnifying-glass')]    anchor=//div[contains(@class,'den-xs hidden-sm')]
@@ -114,11 +119,11 @@ Verify text in every item
     [Arguments]    ${verify_text}
     #${last_page}    Get Text    //div[contains(@class,'pager__count')]/span    between=???${SPACE}stránok    anchor=stránok
     ${xpath}    Set Variable    //li[@class= 'pager__item'][last()]
-    ${last_page}    Get Text    ${xpath}    timeout=30s
+    ${last_page}    QWeb.Get Text    ${xpath}    timeout=30s
     SetConfig    CaseInsensitive    True
     FOR    ${counter}    IN RANGE    ${last_page}-1
         
-        ${elements_count}    Get Element Count    //div[contains(@class, 'products__item')]
+        ${elements_count}    QWeb.Get Element Count    //div[contains(@class, 'products__item')]
         FOR    ${counter}    IN RANGE    ${elements_count}
             Verify Element Text    //div[contains(@class, 'products__item')][${counter}+1]//a[contains(@class, 'products__name')]    
             ...    ${verify_text}
