@@ -3,7 +3,8 @@ from QWeb.keywords.text import get_text
 import logging
 
 
-def price_sorting_control(): #Create List of prices
+def price_sorting_control():
+    """ Create List of prices """
     elements_count = get_element_count("//div[contains(@class,'products__item')]")
     prices = []
     for i in range(elements_count):
@@ -13,9 +14,5 @@ def price_sorting_control(): #Create List of prices
         price_num = int(price.split(',')[0])
         prices.append(price_num)
 
-    for i in range(elements_count-1):
-        index1 = i
-        index2 = i+1
-        logging.info(f'toto je prvy index {index1} a toto je druhy index {index2}')
-        if prices != sorted(prices, reverse=True):
-            raise AssertionError('sorting of items is not corect form high to low')
+    if prices != sorted(prices, reverse=True):
+        raise AssertionError('sorting of items is not corect form high to low')
