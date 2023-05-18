@@ -1,7 +1,6 @@
 from QWeb.keywords.element import get_element_count
 from QWeb.keywords.text import get_text
 from robot.libraries.String import String
-from SeleniumLibrary.keywords import ElementKeywords
 import logging
 
 
