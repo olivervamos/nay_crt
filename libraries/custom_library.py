@@ -12,6 +12,7 @@ def price_sorting_control():
         locator = f"//div[contains(@class,'products__item')][{element_order}]//span[contains(@class,'number left')]"
         price = get_text(locator, between="???€").replace(' ','')
         price_num = int(price.split(',')[0])
+        logging.info(price_num)
         prices.append(price_num)
 
     if prices != sorted(prices, reverse=True):
